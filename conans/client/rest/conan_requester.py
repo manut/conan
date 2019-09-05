@@ -18,6 +18,7 @@ from conans.util.tracer import log_client_rest_api_call
 # TODO: Fix this security warning
 logging.captureWarnings(True)
 
+
 class SSLContextAdapter(HTTPAdapter):
     def init_poolmanager(self, *args, **kwargs):
         try:
@@ -32,6 +33,7 @@ class SSLContextAdapter(HTTPAdapter):
                                  "'conan config set general.use_system_certs=0'")
 
         return super(SSLContextAdapter, self).init_poolmanager(*args, **kwargs)
+
 
 class ConanRequester(object):
 
