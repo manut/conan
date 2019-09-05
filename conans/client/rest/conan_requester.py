@@ -42,10 +42,7 @@ class ConanRequester(object):
             self._http_requester = requests.Session()
             adapter = HTTPAdapter(max_retries=config.retry)
             self._http_requester.mount("http://", adapter)
-            if config.use_system_certs:
-                ssladapter = SSLContextAdapter()
-            else:
-                ssladapter = adapter
+            ssladapter = SSLContextAdapter()
             self._http_requester.mount("https://", ssladapter)
 
         self._timeout_seconds = config.request_timeout
